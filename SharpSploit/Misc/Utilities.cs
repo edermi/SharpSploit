@@ -3,9 +3,13 @@
 // License: BSD 3-Clause
 
 using System;
+using System.Collections;
+using System.Collections.Generic;
+using System.Collections.Specialized;
 using System.IO;
 using System.IO.Compression;
 using System.Linq;
+using System.Net.Sockets;
 using System.Reflection;
 using System.Security.Cryptography.X509Certificates;
 
@@ -110,6 +114,7 @@ namespace SharpSploit.Misc
             get { return IntPtr.Size == 8; }
         }
 
+<<<<<<< HEAD
         public static string ConvertFileLengthForDisplay(long size)
         {
             string result = size.ToString();
@@ -121,6 +126,48 @@ namespace SharpSploit.Misc
             else if (size > 1099511627776) { result = $"{size / 1099511627776}tb"; }
 
             return result;
+=======
+        public static ushort DataLength(int length_start, byte[] string_extract_data)
+        {
+            byte[] bytes = { string_extract_data[length_start], string_extract_data[length_start + 1] };
+            ushort string_length = BitConverter.ToUInt16(GetByteRange(string_extract_data, length_start, length_start + 1), 0);
+            return string_length;
+        }
+        public static byte[] GetByteRange(byte[] array, int start, int end)
+        {
+            var newArray = array.Skip(start).Take(end - start + 1).ToArray();
+            return newArray;
+        }
+
+        public static byte[] ConvertStringToByteArray(string hex)
+        {
+            return Enumerable.Range(0, hex.Length)
+                             .Where(x => x % 2 == 0)
+                             .Select(x => Convert.ToByte(hex.Substring(x, 2), 16))
+                             .ToArray();
+        }
+
+        public static byte[] ConvertFromPacketOrderedDictionary(OrderedDictionary packet_ordered_dictionary)
+        {
+            List<byte[]> byte_list = new List<byte[]>();
+            foreach (DictionaryEntry de in packet_ordered_dictionary)
+            {
+                byte_list.Add(de.Value as byte[]);
+            }
+
+            var flattenedList = byte_list.SelectMany(bytes => bytes);
+            byte[] byte_Array = flattenedList.ToArray();
+
+            return byte_Array;
+        }
+        public static byte[] SendStream(NetworkStream stream, byte[] BytesToSend)
+        {
+            byte[] BytesReceived = new byte[2048];
+            stream.Write(BytesToSend, 0, BytesToSend.Length);
+            stream.Flush();
+            stream.Read(BytesReceived, 0, BytesReceived.Length);
+            return BytesReceived;
+>>>>>>> pth
         }
     }
 }
