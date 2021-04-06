@@ -2007,8 +2007,6 @@
             https://www.pinvoke.net/default.aspx/Enums/NtStatus.html
             </summary>
         </member>
-<<<<<<< HEAD
-=======
         <member name="M:SharpSploit.Execution.SMBExec.NetBIOSSessionService(System.Int32,System.Int32)">
             <summary>
             SMBExec contains all of the functions used to manually create SMB Packet Structures for Pass the Hash attacks.
@@ -2065,7 +2063,6 @@
             <param name="funcName">Name of the function to get a pointer for.</param>
             <returns>Pointer to the function.</returns>
         </member>
->>>>>>> pth
         <member name="M:SharpSploit.Execution.PlatformInvoke.Native.NtCreateThreadEx(System.IntPtr@,SharpSploit.Execution.Win32.WinNT.ACCESS_MASK,System.IntPtr,System.IntPtr,System.IntPtr,System.IntPtr,System.Boolean,System.Int32,System.Int32,System.Int32,System.IntPtr)">
             <summary>
             NTCreateThreadEx is an undocumented function. Created by Microsoft to be a universal, cross-session solution

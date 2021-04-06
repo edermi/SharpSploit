@@ -114,7 +114,6 @@ namespace SharpSploit.Misc
             get { return IntPtr.Size == 8; }
         }
 
-<<<<<<< HEAD
         public static string ConvertFileLengthForDisplay(long size)
         {
             string result = size.ToString();
@@ -126,7 +125,7 @@ namespace SharpSploit.Misc
             else if (size > 1099511627776) { result = $"{size / 1099511627776}tb"; }
 
             return result;
-=======
+        }
         public static ushort DataLength(int length_start, byte[] string_extract_data)
         {
             byte[] bytes = { string_extract_data[length_start], string_extract_data[length_start + 1] };
@@ -167,7 +166,6 @@ namespace SharpSploit.Misc
             stream.Flush();
             stream.Read(BytesReceived, 0, BytesReceived.Length);
             return BytesReceived;
->>>>>>> pth
         }
     }
 }
